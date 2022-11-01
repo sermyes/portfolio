@@ -1,0 +1,243 @@
+body,
+.skillArea h3 {
+  font-family: 'Noto Sans JP', sans-serif;
+  /* light 300,  regular 400 */
+}
+header .left_header ul li a i span,
+.title,
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+  /* regular 400, medium 500, bold 700, black 900 */
+}
+.logo {
+  width: 120px;
+}
+[class*='Area'] {
+  padding: 60px 0 60px 160px;
+}
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #45505b;
+}
+.title::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.title:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #0563bb;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.preloader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+.preloader span {
+  margin: 0 auto;
+  border: 8px solid #0563bb;
+  display: block;
+  border-top-color: #fff;
+  text-indent: -9999px;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: rotate linear 1s infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+header {
+  position: relative;
+}
+header .top_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 3%;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 55px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+header .top_header h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 20px;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+header .top_header p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+  header .left_header {
+    position: fixed;
+    top: 0;
+    left: 20px;
+    bottom: 0;
+    z-index: 100;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+  }
+  header .left_header nav ul li {
+    display: block;
+    margin-bottom: 15px;
+  }
+  header .left_header nav ul li a {
+    display: flex;
+    align-items: center;
+    width: 56px;
+    border-radius: 28px;
+    color: #45505b;
+    padding: 17px 18px;
+    background-color: #f2f3f5;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.3s;
+  }
+  header .left_header nav ul li:hover a,
+  header .left_header nav ul li.active a {
+    background-color: #0563bb;
+    color: #fff;
+  }
+  header .left_header nav ul li:hover a {
+    width: 100%;
+  }
+  header .left_header nav ul li a i {
+    font-size: 20px;
+  }
+  header .left_header nav ul li a span {
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 10px;
+    color: #fff;
+    box-sizing: border-box;
+    display: none;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    opacity: 0;
+  }
+  header .left_header nav ul li:hover a span {
+    display: block;
+    opacity: 1;
+  }
+  .mui,
+  #mui {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  [class*='Area'] {
+    padding-left: 0;
+  }
+  .left_header {
+    display: none;
+  }
+  #mui {
+    display: block;
+    cursor: pointer;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../assets/images/mui.png');
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 20px;
+    top: 50px;
+    transition: background-image 0.3s;
+  }
+  #mui.active {
+    background-image: url('../assets/images/close.png');
+  }
+  .mui {
+    position: fixed;
+    left: -50%;
+    top: 50px;
+    bottom: 0;
+    width: 50%;
+    background-color: #fff;
+    z-index: 100;
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 2%;
+    transition: left 0.3s;
+  }
+  .mui.active {
+    left: 0;
+  }
+  .mui nav {
+    width: 100%;
+  }
+  .mui nav ul li {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .mui nav ul li a {
+    display: block;
+    color: #45505b;
+    background-color: #f2f3f5;
+    padding: 5px 18px;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 50px;
+    line-height: 36px;
+    transition: 0.3s;
+  }
+  .mui nav ul li.active a {
+    color: #fff;
+    background-color: #0563bb;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mui {
+    width: 60%;
+    left: -60%;
+  }
+}

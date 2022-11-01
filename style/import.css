@@ -1,0 +1,10 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Playfair+Display:wght@400;500;700;900&display=swap');
+/* font awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
+/* box-icon */
+@import url('https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css');
+
+@import url('reset.css');
+@import url('global.css');
+@import url('page.css');
