@@ -97,22 +97,6 @@ function typing($target) {
 function animateScroll() {
   const $nav = $('.menu ul li');
   const duration = 1000;
-  const scrollY = $('html').scrollTop();
-  let homeOffsetTop = $('#home').offset().top;
-  let aboutOffsetTop = $('#about').offset().top;
-  let skillOffsetTop = $('#skill').offset().top;
-  let portfolioOffsetTop = $('#portfolio').offset().top;
-  let skillHeight = $('#skill').innerHeight();
-  let aboutHeight = $('#about').innerHeight();
-
-  $(window).resize(() => {
-    homeOffsetTop = $('#home').offset().top;
-    aboutOffsetTop = $('#about').offset().top;
-    skillOffsetTop = $('#skill').offset().top;
-    portfolioOffsetTop = $('#portfolio').offset().top;
-    skillHeight = $('#skill').innerHeight();
-    aboutHeight = $('#about').innerHeight();
-  });
 
   $nav.click(function(e) {
     e.preventDefault();
@@ -131,49 +115,34 @@ function animateScroll() {
     moveScroll('about', duration);
   });
 
-  if (scrollY === 0) {
-    activeNav('home');
-  }
-
-  $(window).scroll(function() {
-    if (
-      $(this).scrollTop() >= homeOffsetTop &&
-      $(this).scrollTop() < aboutOffsetTop / 2
-    ) {
-      activeNav('home');
-    }
-    if (
-      $(this).scrollTop() >= aboutOffsetTop - 200 &&
-      $(this).scrollTop() < skillOffsetTop - aboutHeight / 2
-    ) {
-      activeNav('about');
-    }
-    if (
-      $(this).scrollTop() >= skillOffsetTop - 200 &&
-      $(this).scrollTop() < portfolioOffsetTop - skillHeight
-    ) {
-      activeNav('skill');
-    }
-    if (
-      $(this).scrollTop() >= portfolioOffsetTop - 200 &&
-      $(this).scrollTop() < portfolioOffsetTop + $(window).height()
-    ) {
-      activeNav('portfolio');
-    }
-    if ($(this).scrollTop() >= portfolioOffsetTop + $(window).height()) {
-      activeNav('contact');
-    }
-  });
+  scrollToActiveNav();
 }
 
-function activeNav(areaId) {
-  if (activeMorePage) {
-    return;
-  }
+function scrollToActiveNav() {
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0
+  };
 
-  const $nav = $('.menu ul li');
-  $nav.removeClass('active');
-  $nav.filter(`[data-nav=${areaId}]`).addClass('active');
+  const observer = new IntersectionObserver(entries => {
+    const $headerNav = $('.left_header ul li');
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = entry.target.dataset.num;
+        $headerNav
+          .eq(index)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+      }
+    });
+  }, options);
+
+  const targets = $('.scroll_target');
+  targets.each((_, target) => {
+    observer.observe(target);
+  });
 }
 
 function moveScroll(areaId, duration) {
