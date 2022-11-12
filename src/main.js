@@ -5,8 +5,6 @@ $(window).load(function () {
   $(".preloader").fadeOut(1000);
 });
 
-let activeMorePage = false;
-
 $(document).ready(function () {
   addPortfolioItems(".publishing__slider", publishData);
   addPortfolioItems(".frontEnd__slider", frontData);
@@ -255,7 +253,6 @@ function showMorePage() {
 
   $view.click(function (e) {
     e.preventDefault();
-    activeMorePage = true;
     scrollY = $("html").scrollTop();
     id = "." + $(this).attr("id");
     $(".more_page").fadeIn();
