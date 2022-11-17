@@ -2,7 +2,7 @@
   {
     "mainImage": "assets/images/vegetable/portfolio_vegetable.png",
     "title": "Vanila Js Game",
-    "webUrl": "https://sermyes.github.io/vegetable-garden/",
+    "webUrl": "https://vegetable-garden.netlify.app/",
     "srcUrl": "https://github.com/sermyes/vegetable-garden/",
     "id": "vegetable",
     "data": [
